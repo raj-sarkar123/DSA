@@ -2,25 +2,24 @@ class Solution {
 public:
     string mergeAlternately(string s1, string s2) {
         string ans;
-        int m = 0;
-       
-        int mini = min(s1.length(), s2.length());
-        while (m < mini) {
-            ans.push_back(s1[m]);
-            ans.push_back(s2[m]);
-            m++;
-        }
-        string longest;
-        if (s1.length() > s2.length()) {
+        int i = 0;
 
-            longest = s1;
-        } else {
+        while (i < s1.length() && i < s2.length()) {
+            ans += s1[i];
+            ans += s2[i];
+            i++;
+        }
 
-            longest = s2;
+        while (i < s1.length()) {
+            ans += s1[i];
+            i++;
         }
-        for (int i = m; i < longest.length(); i++) {
-            ans.push_back(longest[i]);
+
+        while (i < s2.length()) {
+            ans += s2[i];
+            i++;
         }
+
         return ans;
     }
 };
